@@ -1,6 +1,6 @@
 # Enzymator
 
-Enzimator is an extremely simple and powerful aggregation framework. Every ruby app can use it to unleash the infinite power of the MapReduce concept. If it could tame BigData, imagine what it can do with fewer data!
+Enzymator is an extremely simple and powerful aggregation framework. Every ruby app can use it to unleash the infinite power of the MapReduce concept. If it could tame BigData, imagine what it can do with fewer data!
 
 You should take two minutes to check out the test examples.
 
@@ -8,7 +8,7 @@ You should take two minutes to check out the test examples.
 
 Add this line to your application's Gemfile:
 
-    gem 'enzimator'
+    gem 'enzymator'
 
 And then execute:
 
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install enzimator
+    $ gem install enzymator
 
 ## Usage
 
