@@ -19,4 +19,10 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
+  s.required_ruby_version = '>= 1.9.2'
+
+  s.add_development_dependency 'rake', ['~> 11.2']
+  s.add_development_dependency 'minitest', ['~> 5.9']
+  s.add_development_dependency 'pry-byebug', ['~> 3.4']
+
 end
