@@ -6,9 +6,9 @@ require 'enzymator/version'
 Gem::Specification.new do |s|
   s.name        = 'enzymator'
   s.version     = Enzymator::Version
-  s.date        = '2016-07-17'
+  s.date        = '2016-07-24'
   s.summary     = "An extremely simple and powerful aggregation framework"
-  s.description = "A gem to perform any kind of calculation on any kind of data. The essence of MapReduce distilled in a few lines of code for the ruby community to enjoy."
+  s.description = "A gem to perform any kind of transformation on any kind of data. The essence of MapReduce distilled in a few lines of code for the ruby community to enjoy."
   s.authors     = ["Eugenio Bruno"]
   s.email       = 'eugeniobruno@gmail.com'
   s.homepage    = 'http://rubygems.org/gems/enzymator'
@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '>= 1.9.2'
+  s.required_ruby_version = '>= 2.0.0'
 
   s.add_development_dependency 'rake', ['~> 11.2']
   s.add_development_dependency 'minitest', ['~> 5.9']

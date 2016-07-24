@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'enzymator'
 
-class AggregationTest < Minitest::Test
+class TestIntroduction < Minitest::Test
 
   def test_sum_numbers
     numbers = (1..1000).to_a
@@ -9,10 +9,8 @@ class AggregationTest < Minitest::Test
     expected_sum = numbers.reduce(:+)
 
     # but where's the fun in that...
-    actual_sum = Enzymator::Aggregation.new({
-      null_result:      lambda { 0 },
-      map:              lambda { |n| n },
-      reduce:           lambda { |acum, n, _| acum + n },
+    actual_sum = Enzymator::Aggregations::MapReduce.new({
+      reduction: ->(acum, n) { acum + n }
     }).run_on(numbers)
 
     assert_equal expected_sum, actual_sum
@@ -39,14 +37,10 @@ class AggregationTest < Minitest::Test
       'fat.'    => 1,
     }
 
-    aggregation = Enzymator::Aggregation.new({
-      null_result:      lambda { Hash.new(0) },
-      map:              lambda { |w| w },
-      reduce:           lambda { |acum, w, _| acum[w] += 1; acum }
-    }).run_on!(words)
-    # notice the bang
-
-    actual_hash = aggregation.result
+    actual_hash = Enzymator::Aggregations::MapReduce.new({
+      reduction: ->(acum, w) { acum[w] += 1; acum },
+      empty: Hash.new(0)
+    }).run_on(words)
 
     assert_equal expected_hash, actual_hash
 
@@ -55,10 +49,11 @@ class AggregationTest < Minitest::Test
     expected_hash.delete('The')
     expected_hash = expected_hash.map { |k, v| { k.downcase => v } }.reduce(&:merge)
 
-    aggregation.patch_config( map: lambda { |w| w.downcase } )
-    .run_on!(words)
-
-    actual_hash = aggregation.result
+    actual_hash = Enzymator::Aggregations::MapReduce.new({
+      mapping:   ->(w) { w.downcase },
+      reduction: ->(acum, w) { acum[w] += 1; acum },
+      empty: Hash.new(0)
+    }).run_on(words)
 
     assert_equal expected_hash, actual_hash
 

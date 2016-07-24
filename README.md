@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-You set up a new Aggregation instance, tell it to run with your Enumerator, and get the result. The tests are self-explanatory.
+You set up a new transformation instance, tell it to run with your Object, and get the result. The tests are self-explanatory.
 
 ## Contributing
 
